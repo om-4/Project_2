@@ -1,4 +1,6 @@
-
+<?php
+session.start();
+?>
 
 <html lang="en">
   <head>
