@@ -45,6 +45,7 @@ $_SESSION["appTime"] = $_POST["appTime"]; // radio button selection from previou
 					$row2 = mysql_fetch_row($rs2);
 					$oldAdvisorName = $row2[1] . " " . $row2[2];
 					$AdvisingLocation = $row2[6];
+					$advisorOffice = $row2[5];
 				}
 
 				//Group appointment
@@ -70,6 +71,7 @@ $_SESSION["appTime"] = $_POST["appTime"]; // radio button selection from previou
 				$row2 = mysql_fetch_row($rs2);
 				$currentAdvisorName = $row2[1] . " " . $row2[2];
 				$AdvisingLocation = $row2[6];
+				$advisorOffice = $row2[5];
 			}
 
                         //Group appointment
@@ -80,7 +82,8 @@ $_SESSION["appTime"] = $_POST["appTime"]; // radio button selection from previou
 			echo "<label for='newinfo'>";
 			echo "Advisor: ",$currentAdvisorName,"<br>";
 			echo "Appointment: ",date('l, F d, Y g:i A', $currentDatephp), "<br>";
-			echo "Advising Location: ", $AdvisingLocation, "</label>";
+			echo "Advising Location: ", $AdvisingLocation, "<br>";
+			echo "Advisor's Office: ", $advisorOffice, "</label>", "<br>";
 		?>
         </div>
 

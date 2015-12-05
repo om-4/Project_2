@@ -52,7 +52,8 @@ $studID = $_SESSION["studID"];
 				echo "<label for='info'>";
 				echo "Advisor: ", $advisorName, "<br>";
 				echo "Appointment: ", date('l, F d, Y g:i A', $datephp), "<br>";
-				echo "Advising Location: ", $advisorLocation,  " </label>", "<br>";
+				echo "Advising Location: ", $advisorLocation, "<br>";
+				echo "Advisor's Office: ", $advisorOffice,  "</label>", "<br>";
 			}
 
 			else // something is up, and there DB table needs to be fixed
