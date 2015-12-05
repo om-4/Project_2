@@ -40,7 +40,8 @@ $studID = $_SESSION["studID"];
 					$rs2 = $COMMON->executeQuery($sql2, $_SERVER["SCRIPT_NAME"]);
 					$row2 = mysql_fetch_row($rs2);
 					$advisorName = $row2[1] . " " . $row2[2];
-					$advisorLocation = $row2[5];
+					$advisorOffice = $row2[5];
+					$advisorLocation = $row2[6];
 				}
 
 				//Group advising appointment
