@@ -51,7 +51,8 @@ $studID = $_SESSION["studID"];
 				//Display the advising information
 				echo "<label for='info'>";
 				echo "Advisor: ", $advisorName, "<br>";
-				echo "Appointment: ", date('l, F d, Y g:i A', $datephp), " in ", $advisorLocation, " </label>";
+				echo "Appointment: ", date('l, F d, Y g:i A', $datephp), "<br>";
+				echo "Advising Location: ", $advisorLocation,  " </label>", "<br>";
 			}
 
 			else // something is up, and there DB table needs to be fixed
