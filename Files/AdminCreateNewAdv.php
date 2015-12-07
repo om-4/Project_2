@@ -33,11 +33,11 @@ session_start();
 		<?php
 
       //Password does not match
-      if($_SESSION["PassCon"] == true){
-        echo "<h3 style='color:red'>Passwords do not match!!</h3>";
-      }
+      //if($_SESSION["PassCon"] == true){
+        //echo "<h3 style='color:red'>Passwords do not match!!</h3>";
+    //}
     ?>
-		<form action="AdminProcessCreateNew.php" method="post" name="Create">
+		<form action="AdminCreateNew.php" method="post" name="Create">
 
                 <!--First name field-->
 		<div class="field">
@@ -69,6 +69,13 @@ session_start();
 	      		<input id="ConfP" size="20" maxlength="50" type="password" name="ConfP" required>
 	   	</div>	
 		<br>
+
+                <!--MeetingLocation field-->
+                <div class="field">
+                        <label for="MeetLoc">Meeting Location</label>
+                        <input id="MeetLoc" size="20" maxLength="50" type="text" name="MeetLoc" required>
+                </div>
+                <br>
 
                 <!--Location field-->
                 <div class="field">

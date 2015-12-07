@@ -1,7 +1,28 @@
 <?php
 session_start();
+//echo ("session id is ".session_id()."<br>");
 $debug = false;
+//echo("<br>id is ".$_SESSION["userId"]."<br>");
 
+/*if($_POST["GroupApp"] != "")
+  {
+    $tempID = $_SESSION["userId"];
+    $tempGroup = $_POST["GroupApp"]."&row[]=$tempID";
+    $_SESSION["userId"] = $tempGroup;
+    }*/
+
+//echo("<br>temp id is ".$tempID."<br>");
+//echo("<br>group is ".$_POST["GroupApp"]."<br>");
+//echo("<br>temp group is ".$tempGroup."<br>");
+
+//echo("<br>session id is ".$_SESSION["userId"]."<br>");
+/*if($_POST["next"] == "Edit Appointment")
+  {
+    //$_SESSION["userId"] = 4;
+    header('Location: AdminProceedEditGroup.php');
+    exit();
+    }*/
+//echo("on AdminConfirmEditGroup.php");
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +44,16 @@ $debug = false;
         <div class="top">
 		<div class="field">
         <?php
-          $delete = $_SESSION["Delete"];
-          $group = $_SESSION["GroupApp"];
+
+          $delete = false;
+
+/*if ($_POST["next"] == "Delete Appointment")
+	    {
+	      $delete = true;
+	      }*/
+
+          $group = $_SESSION["userId"];
+//echo("<br><br>group is ".$group."<br><br>");
           parse_str($group);
  
           //Connect to database
@@ -32,7 +61,7 @@ $debug = false;
           $COMMON = new Common($debug);
 
           //If we deleted the appointment
-          if($delete == true){
+          /*if($delete == true){
             echo("<h1>Removed Appointment</h1><br>");
 
             $sql = "SELECT `EnrolledID` FROM `Proj2Appointments` WHERE `Time` = '$row[0]'
@@ -98,10 +127,13 @@ $debug = false;
             if($stds[0]){
               echo "<p style='color:red'>Students have been notified of the cancellation.</p>";
             }
-          }
-
+          
+           //sets userId back to its correct value
+           echo("<br><br><br>row 4 is ".$row[4]."<br><br><br>");
+           $_SESSION["userId"] = $row[4];
           //Changing the appointment
-          else{
+	  }
+          else{*/
             echo("<h1>Changed Appointment</h1><br>");
 			echo("<h2>Previous Appointment:</h2>");
             echo("Time: ". date('l, F d, Y g:i A', strtotime($row[0])). "<br>");
@@ -135,12 +167,17 @@ $debug = false;
                     AND `EnrolledNum` = '$row[2]' AND `Max` = '$row[3]'";
             $rs = $COMMON->executeQuery($sql, "Advising Appointments"); 
 
+	    
+	    //sets userId back to its correct value
+	    //echo("<br><br><br>row 4 is ".$row[4]."<br><br><br>");
+            //$_SESSION["userId"] = $row[4];
+
 	    //Return home
             echo("<br><br>");
-            echo("<form method=\"link\" action=\"AdminUI.php\">");
+            echo("<form method=\"link\" action=\"AdminProcessEditGroup.php\">");
             echo("<input type=\"submit\" name=\"next\" class=\"button large go\" value=\"Return to Home\">");
             echo("</form>");
-          }
+
         ?>
 	</div>
 	</div>

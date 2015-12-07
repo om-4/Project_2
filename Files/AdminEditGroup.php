@@ -1,6 +1,7 @@
 <?php
 session_start();
-$_SESSION["Delete"] = false;
+//echo("onn AdminEditGroup.php");
+//$_SESSION["Delete"] = false;
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +35,7 @@ $_SESSION["Delete"] = false;
             $row = mysql_fetch_array($rs, MYSQL_NUM); 
 			//first item in row
             if($row){
+	      //change back to AdiminProcessEditGroup
               echo("<form action=\"AdminProcessEditGroup.php\" method=\"post\" name=\"Confirm\">");
 	echo("<table border='1px'>\n<tr>");
 	echo("<tr><td width='320px'>Time</td><td>Majors</td><td>Seats Enrolled</td><td>Total Seats</td></tr>\n");
@@ -78,7 +80,7 @@ $_SESSION["Delete"] = false;
               echo("<input style=\"margin-left: 10px\" type=\"submit\" name=\"next\" class=\"button large go\" value=\"Edit Appointment\">");
               echo("</div>");
 			  echo("</form>");
-			  echo("<form method=\"link\" action=\"AdminUI.php\">");
+			  echo("<form method=\"link\" action=\"AdminProcessEditGroup.php\">");
               echo("<input type=\"submit\" name=\"next\" class=\"button large\" value=\"Cancel\">");
               echo("</form>");
             }
@@ -93,7 +95,7 @@ $_SESSION["Delete"] = false;
   </div>
   </div>
   </div>
-	<?php include('./workOrder/workButton.php'); ?>
+	<?php include('../workOrder/workButton.php'); ?>
   </div>
   </body>
   

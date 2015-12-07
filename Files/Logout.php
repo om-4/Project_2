@@ -1,8 +1,8 @@
 <?php
 session_start();
-$flag = false;
+$flag = true;
 
-if(isset($_SESSION['studID'])) { $flag = true; }
+if(isset($_SESSION['userId'])) { $flag = false; }
 
 session_unset();
 session_destroy();

@@ -75,19 +75,40 @@ $COMMON = new Common($debug);
 			if(!empty($majors)){
 				$majorPrint = "";
 				foreach($majors as $m){
-					$majorDB .= $m . " ";
-					$majorPrint .= $m . ", ";
+				  if ($m == "Computer Science")
+				    {
+				      $m = "CMSC";
+				    }
+				  elseif($m == "Mechanical Engineering")
+				    {
+				      $m = "MENG";
+				    }
+				  elseif($m == "Chemical Engineering")
+				    {
+				      $m = "CENG";
+				    }
+				  elseif($m == "Computer Engineering")
+				    {
+				      $m = "CMPE";
+				    }
+				  else
+				    {
+				      $m = "ENGR";
+				    }
+
+				  $majorDB .= $m . " ";
+				  $majorPrint .= $m . ", ";
 				}
 				$majorPrint = substr($majorPrint, 0, -2);
 			}
 			
 			//get advisor id
-			$User = $_SESSION["UserN"];
-			$Pass = $_SESSION["PassW"];
-			$sql = "select `id` from `Proj2Advisors` where `Username` = '$User' and `Password` = '$Pass'";
-			$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-			$row = mysql_fetch_row($rs);
-			$id = $row[0];
+			//$User = $_SESSION["UserN"];
+			//$Pass = $_SESSION["PassW"];
+			//$sql = "select `id` from `Proj2Advisors` where `Username` = '$User' and `Password` = '$Pass'";
+			//$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+			//$row = mysql_fetch_row($rs);
+			$id = $_SESSION["userId"];
 			
 			//make sure app doesn't exist
 			//insert new app to DB

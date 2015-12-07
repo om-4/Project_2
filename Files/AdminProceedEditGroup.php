@@ -1,5 +1,7 @@
 <?php
 session_start();
+//echo ("session id is ".session_id()."<br>");
+//echo("<br>on AdminProceedEditGroup.php");
 ?>
 
 <!DOCTYPE html>
@@ -26,9 +28,13 @@ session_start();
             include('../CommonMethods.php');
             $COMMON = new Common($debug);
 
-            $group = $_SESSION["GroupApp"];
+            //userId change so it is group appointment with user id at end
+//echo("userid is ".$_SESSION["userId"]."<br>");
+            $group = $_SESSION["userId"];
+//echo("<br>userid is now ".$_SESSION["userId"]."<br><br>");
+//echo("Group is ".$group."<br>");
             parse_str($group);
-
+//echo("<br>row 3 is ".$row[3]."<br>");
             //Form from AdminConfirmEditGroup.php
             echo("<form action=\"AdminConfirmEditGroup.php\" method=\"post\" name=\"Edit\">");
             echo("Time: ". date('l, F d, Y g:i A', strtotime($row[0])). "<br>");
@@ -41,7 +47,7 @@ session_start();
             }
             echo("Number of students enrolled: $row[2] <br>");
             echo("Student limit: ");
-            echo("<input type=\"number\" id=\"stepper\" name=\"stepper\" min=\"$row[2]\" max=\"$row[3]\" value=\"$row[3]\" />");
+            echo("<input type=\"number\" id=\"stepper\" name=\"stepper\" min=\"$row[2]\" max=10 value=\"$row[3]\" />");
 
             echo("<br><br>");
 

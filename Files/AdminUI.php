@@ -1,12 +1,11 @@
 <?php 
 session_start();
 $debug = false;
-
 if($debug) { echo("Session variables-> ".var_dump($_SESSION)); }
 
 include('../CommonMethods.php');
 $COMMON = new Common($debug);
-$_SESSION["PassCon"] = false;
+//$_SESSION["PassCon"] = false;
 ?>
 
 <!DOCTYPE html>
@@ -22,22 +21,20 @@ $_SESSION["PassCon"] = false;
         <div class="top">
 	<h2> Hello 
 	<?php
-
-	if(!isset($_SESSION["UserN"])) // someone landed this page by accident
+  //echo("<br>session id is ".$_SESSION["userId"]."<br>");
+       $sql = "SELECT `firstName` FROM `Proj2Advisors`WHERE `id` = ".$_SESSION["userId"];
+       $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+       $row = mysql_fetch_row($rs);
+       $name = $row[0];
+	if(!isset($name)) // someone landed this page by accident
 	{
 		return;
 	}		
 
                 //Set the username and password, then find the advisor name
-		$User = $_SESSION["UserN"];
-		$Pass = $_SESSION["PassW"];
-		$sql = "SELECT `firstName` FROM `Proj2Advisors` 
-			WHERE `Username` = '$User' 
-			and `Password` = '$Pass'";
-
-		$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-		$row = mysql_fetch_row($rs);
-		echo $row[0];
+		//$User = $_SESSION["UserN"];
+		//$Pass = $_SESSION["PassW"];
+		echo $name;
 	?>
 	</h2>
 	
@@ -63,7 +60,7 @@ $_SESSION["PassCon"] = false;
         </div>
 	</div>
 
-	<?php include('./workOrder/workButton.php'); ?>
+	<?php include('../workOrder/workButton.php'); ?>
 
 </body>
   
